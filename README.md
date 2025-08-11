@@ -1,5 +1,3 @@
-# wireguard-mikrotik
-
 # 📡 MikroTik RouterOS v7 - Configuración básica + WireGuard VPN (Puerto 51820)
 
 Este documento contiene los pasos para configurar un router MikroTik desde cero:
