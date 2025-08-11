@@ -125,3 +125,24 @@ Tu dominio será algo como: xxxxx.sn.mynetname.net
 ➕ Agregar más clientes VPN
 Solo repite el paso 10 con una IP diferente, como 10.10.10.3/32, 10.10.10.4/32, etc.
 ```
+
+### Si quieres usar una DDNS (Dynamic DNS) con tu MikroTik para acceder a él remotamente incluso si tu IP cambia, puedes hacerlo de forma muy sencilla con el servicio gratuito que incluye MikroTik: IP Cloud, o usando otros servicios externos como DuckDNS, No-IP, etc.
+
+✅ Opción recomendada: Usar MikroTik Cloud DDNS
+MikroTik ya incluye un servicio DDNS gratuito, y es el más fácil de usar.
+
+🔧 Activarlo:
+```
+/ip cloud set ddns-enabled=yes update-time=yes
+🔍 Ver tu dominio DDNS:
+bash
+Copiar
+Editar
+/ip cloud print
+Te mostrará algo así:
+
+ddns-enabled: yes
+dns-name: xxxxxx.sn.mynetname.net
+public-address: xx.xx.xx.xx
+Ese dominio xxxxxx.sn.mynetname.net será tu DDNS, que puedes usar como Endpoint en tu cliente WireGuard o para acceder a tu red remotamente.
+```
