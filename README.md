@@ -29,19 +29,17 @@ Este documento contiene los pasos para configurar un router MikroTik desde cero:
 /system reset-configuration no-defaults=yes skip-backup=yes
 
 ⚠️ Esto borra toda la configuración previa. Úsalo solo si estás comenzando desde cero.
-
+```
 ### 2. Configurar WAN (ether1)
-
-
-
+```
 /interface ethernet
 set [find default-name=ether1] name=WAN
 
 /ip dhcp-client
 add interface=WAN use-peer-dns=yes use-peer-ntp=yes disabled=no
-
+```
 ### 3. Configurar LAN (ether2)
-
+```
 /interface ethernet
 set [find default-name=ether2] name=LAN
 
@@ -58,44 +56,44 @@ add address-pool=dhcp_pool interface=LAN name=dhcp1
 add address=192.168.88.0/24 gateway=192.168.88.1 dns-server=1.1.1.1,8.8.8.8
 
 /ip dhcp-server enable dhcp1
-
+```
 ### 4. Habilitar NAT para salida a Internet
-
+```
 /ip firewall nat
 add chain=srcnat out-interface=WAN action=masquerade
-
+```
 ### 5. Configurar DNS
-
+```
 /ip dns
 set servers=1.1.1.1,8.8.8.8 allow-remote-requests=yes
 🔐 Parte 2: Servidor VPN con WireGuard
-
+```
 ### 6. Crear interfaz WireGuard (puerto 51820)
-
+```
 /interface/wireguard
 add name=wg0 listen-port=51820
 La clave privada se genera automáticamente. Puedes verla con:
 
 /interface/wireguard/print detail
-
+```
 ###  7. Asignar IP al túnel VPN
-
+```
 /ip address
 add address=10.10.10.1/24 interface=wg0
-
+```
 ### 8. Permitir tráfico VPN en el firewall
-
+```
 /ip firewall filter
 add chain=input action=accept protocol=udp dst-port=51820 comment="Permitir WireGuard VPN"
-
+```
 ### 9. NAT para los clientes VPN
-
+```
 /ip firewall nat
 add chain=srcnat src-address=10.10.10.0/24 out-interface=WAN action=masquerade
-
+```
 ### 10. Agregar cliente VPN (peer)
 Desde tu cliente (PC o móvil), genera claves públicas/privadas y luego:
-
+```
 /interface/wireguard/peers
 add interface=wg0 public-key="CLAVE_PUBLICA_DEL_CLIENTE" allowed-address=10.10.10.2/32
 💻 Configuración del Cliente WireGuard (ejemplo)
@@ -126,3 +124,4 @@ Tu dominio será algo como: xxxxx.sn.mynetname.net
 
 ➕ Agregar más clientes VPN
 Solo repite el paso 10 con una IP diferente, como 10.10.10.3/32, 10.10.10.4/32, etc.
+```
