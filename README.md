@@ -83,6 +83,10 @@ add address=10.10.10.1/24 interface=wg0
 ```
 /ip firewall filter
 add chain=input action=accept protocol=udp dst-port=51820 comment="Permitir WireGuard VPN"
+/ip firewall filter
+add chain=input src-address=10.10.10.0/24 action=accept comment="Permitir acceso VPN al Router"
+/ip firewall filter
+add chain=forward src-address=10.10.10.0/24 action=accept comment="Permitir tráfico desde VPN"
 ```
 ### 9. NAT para los clientes VPN
 ```
