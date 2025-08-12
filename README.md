@@ -25,9 +25,9 @@ Este documento contiene los pasos para configurar un router MikroTik desde cero:
 
 ```
 /system reset-configuration no-defaults=yes skip-backup=yes
-
-⚠️ Esto borra toda la configuración previa. Úsalo solo si estás comenzando desde cero.
 ```
+⚠️ Esto borra toda la configuración previa. Úsalo solo si estás comenzando desde cero.
+
 ### 2. Configurar WAN (ether1)
 ```
 /interface ethernet
