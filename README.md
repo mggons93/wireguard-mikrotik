@@ -124,7 +124,9 @@ add chain=srcnat src-address=10.8.0.0/24 out-interface=WAN action=masquerade
 Desde tu cliente (PC o móvil), genera claves públicas/privadas y luego:
 ```
 /interface/wireguard/peers
-add interface=wg0 public-key="CLAVE_PUBLICA_DEL_CLIENTE" allowed-address=10.10.10.2/32
+add interface=wg0 public-key="CLAVE_PUBLICA_DEL_CLIENTE" allowed-address=10.8.0.2/32
+```
+```
 💻 Configuración del Cliente WireGuard (ejemplo)
 
 [Interface]
