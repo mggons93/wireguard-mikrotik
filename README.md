@@ -118,7 +118,7 @@ add chain=forward src-address=10.8.0.0/24 action=accept comment="Permitir tráfi
 ### 9. NAT para los clientes VPN
 ```
 /ip firewall nat
-add chain=srcnat src-address=10.10.10.0/24 out-interface=WAN action=masquerade
+add chain=srcnat src-address=10.8.0.0/24 out-interface=WAN action=masquerade
 ```
 ### 10. Agregar cliente VPN (peer)
 Desde tu cliente (PC o móvil), genera claves públicas/privadas y luego:
