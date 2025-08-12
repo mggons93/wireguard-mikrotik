@@ -104,16 +104,16 @@ La clave privada se genera automáticamente. Puedes verla con:
 ###  7. Asignar IP al túnel VPN
 ```
 /ip address
-add address=10.10.10.1/24 interface=wg0
+add address=10.8.0.1/24 interface=wg0
 ```
 ### 8. Permitir tráfico VPN en el firewall
 ```
 /ip firewall filter
 add chain=input action=accept protocol=udp dst-port=51820 comment="Permitir WireGuard VPN"
 /ip firewall filter
-add chain=input src-address=10.10.10.0/24 action=accept comment="Permitir acceso VPN al Router"
+add chain=input src-address=10.8.0.0/24 action=accept comment="Permitir acceso VPN al Router"
 /ip firewall filter
-add chain=forward src-address=10.10.10.0/24 action=accept comment="Permitir tráfico desde VPN"
+add chain=forward src-address=10.8.0.0/24 action=accept comment="Permitir tráfico desde VPN"
 ```
 ### 9. NAT para los clientes VPN
 ```
@@ -129,7 +129,7 @@ add interface=wg0 public-key="CLAVE_PUBLICA_DEL_CLIENTE" allowed-address=10.10.1
 
 [Interface]
 PrivateKey = CLIENT_PRIVATE_KEY
-Address = 10.10.10.2/32
+Address = 10.8.0.2/32
 DNS = 1.1.1.1
 
 [Peer]
