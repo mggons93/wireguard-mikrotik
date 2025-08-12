@@ -166,9 +166,7 @@ MikroTik ya incluye un servicio DDNS gratuito, y es el más fácil de usar.
 ```
 /ip cloud set ddns-enabled=yes update-time=yes
 🔍 Ver tu dominio DDNS:
-bash
-Copiar
-Editar
+
 /ip cloud print
 Te mostrará algo así:
 
