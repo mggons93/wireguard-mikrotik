@@ -37,9 +37,6 @@ set [find default-name=ether1] name=WAN
 /ip dhcp-client
 add interface=WAN use-peer-dns=yes use-peer-ntp=yes disabled=no
 
-/interface ethernet
-set [find default-name=ether1] name=WAN
-
 2. Asigna IP estática a la interfaz WAN:
 
 /ip address
