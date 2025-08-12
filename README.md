@@ -96,6 +96,7 @@ set servers=1.1.1.1,8.8.8.8 allow-remote-requests=yes
 ```
 /interface/wireguard
 add name=wg0 listen-port=51820
+
 La clave privada se genera automáticamente. Puedes verla con:
 
 /interface/wireguard/print detail
