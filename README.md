@@ -38,6 +38,8 @@ set [find default-name=ether1] name=WAN
 add interface=WAN use-peer-dns=yes use-peer-ntp=yes disabled=no
 
 2. Asigna IP estática a la interfaz WAN:
+/interface ethernet
+set [find default-name=ether1] name=WAN
 
 /ip address
 add address=192.168.1.200/24 interface=WAN network=192.168.1.0
