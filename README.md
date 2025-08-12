@@ -44,6 +44,7 @@ set [find default-name=ether1] name=WAN
 
 /ip address
 add address=192.168.1.200/24 interface=WAN network=192.168.1.0
+
 ⚠️ Reemplaza /24 con la máscara correcta si tu red es diferente. /24 = 255.255.255.0
 
 3. Configura el gateway (puerta de enlace) de tu red (por ejemplo, si el router del proveedor es 192.168.1.1):
