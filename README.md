@@ -30,11 +30,34 @@ Este documento contiene los pasos para configurar un router MikroTik desde cero:
 
 ### 2. Configurar WAN (ether1)
 ```
+1. Asigna DHCP a la interfaz WAN:
 /interface ethernet
 set [find default-name=ether1] name=WAN
 
 /ip dhcp-client
 add interface=WAN use-peer-dns=yes use-peer-ntp=yes disabled=no
+
+/interface ethernet
+set [find default-name=ether1] name=WAN
+
+2. Asigna IP estática a la interfaz WAN:
+
+/ip address
+add address=192.168.1.200/24 interface=WAN network=192.168.1.0
+⚠️ Reemplaza /24 con la máscara correcta si tu red es diferente. /24 = 255.255.255.0
+
+3. Configura el gateway (puerta de enlace) de tu red (por ejemplo, si el router del proveedor es 192.168.1.1):
+
+/ip route
+add dst-address=0.0.0.0/0 gateway=192.168.1.1
+4. (Opcional) Configura servidores DNS manualmente:
+
+/ip dns
+set servers=1.1.1.1,8.8.8.8 allow-remote-requests=yes
+❌ Elimina el cliente DHCP en WAN si lo tenías:
+
+/ip dhcp-client
+remove [find interface=WAN]
 ```
 ### 3. Configurar LAN (ether2)
 ```
