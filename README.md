@@ -54,6 +54,7 @@ add dst-address=0.0.0.0/0 gateway=192.168.1.1
 
 /ip dns
 set servers=1.1.1.1,8.8.8.8 allow-remote-requests=yes
+
 ❌ Elimina el cliente DHCP en WAN si lo tenías:
 
 /ip dhcp-client
@@ -87,8 +88,10 @@ add chain=srcnat out-interface=WAN action=masquerade
 ```
 /ip dns
 set servers=1.1.1.1,8.8.8.8 allow-remote-requests=yes
+
 🔐 Parte 2: Servidor VPN con WireGuard
 ```
+
 ### 6. Crear interfaz WireGuard (puerto 51820)
 ```
 /interface/wireguard
